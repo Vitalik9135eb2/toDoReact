@@ -1,10 +1,16 @@
 import React from "react";
 
 
-const ListTodo = () => {
+const ListTodo = ({ todo, setTodo }) => {
+
+    console.log(todo)
 
     return (
-        <div className="">List</div>
+        <div className="">
+            {
+                todo.map(item => <div>{item.title}</div>)
+            }
+        </div>
     )
 }
 
