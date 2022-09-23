@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddTodo from "./components/addTodo/AddTodo";
 import Header from "./components/headerTodo/Header";
 import ListTodo from "./components/listTodo.jsx/ListTodo";
+import s from "./_app.scss"
 
 const App = () => {
 
@@ -28,7 +29,7 @@ const App = () => {
   ]);
 
   return (
-    <div className="App">
+    <div className={s.wrap}>
       <Header/>
       <AddTodo/>
       <ListTodo todo={todo} setTodo={setTodo}/>
