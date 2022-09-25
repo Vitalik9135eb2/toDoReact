@@ -10,7 +10,7 @@ const App = () => {
     {
       id: 1,
       title: "First todo",
-      status: true,
+      status: false,
     },
 
     {
@@ -30,9 +30,11 @@ const App = () => {
 
   return (
     <div className={s.wrap}>
-      <Header/>
-      <AddTodo todo={todo} setTodo={setTodo} />
-      <ListTodo todo={todo} setTodo={setTodo}/>
+        <div className={s.inner}>
+          <Header/>
+          <AddTodo todo={todo} setTodo={setTodo} />
+          <ListTodo todo={todo} setTodo={setTodo}/>
+        </div>      
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import s from "./_listTodo.module.scss"
+import s from "./_listTodo.module.scss";
+
+import trashImg from "./../../img/delete.svg";
+import editImg from "./../../img/edit.svg";
+import doneImg from "./../../img/icon_check_24.svg";
 
 
 const ListTodo = ({ todo, setTodo }) => {
@@ -31,10 +35,10 @@ const ListTodo = ({ todo, setTodo }) => {
         setValue(value)
     }
 
-    const saveTodo = (id) =>{
-        
+    const saveTodo = (id) => {
+
         let newTodo = [...todo].map(item => {
-            if(item.id == id){
+            if (item.id == id) {
                 item.title = value
             }
 
@@ -44,41 +48,60 @@ const ListTodo = ({ todo, setTodo }) => {
         setTodo(newTodo)
         setEdit(null)
     }
-
-
+    
     return (
-        <div className="">
+        <ul className={s.list}>
             {
                 todo.map(item => (
 
-                    <div key={item.id} className={s.wrap}>
+                    
+                    <li key={item.id} className={!item.status ? s.item : `${s.item}  ${s.itemDone}`}>
 
                         {
                             edit == item.id
-                                ? <div>
-                                    <input type="text" onChange={e => setValue(e.target.value)} value={value} />
+                                ? <div className={s.textWrap}>
+                                    <input className={s.todoTextInput}
+                                        type="text"
+                                        onChange={e => setValue(e.target.value)}
+                                        value={value}
+                                        autoFocus
+                                    />
                                 </div>
                                 :
-                                <div>{item.title}</div>
+                                <div className={s.textWrap}>
+                                    <p className={s.todoText}>{item.title}</p>
+                                </div>
                         }
+
 
                         {
                             edit == item.id
                                 ? <button onClick={() => saveTodo(item.id)}>Save</button>
 
-                                : <div>
-                                    <button onClick={() => deleteTodo(item.id)}></button>
-                                    <button onClick={() => statusTodo(item.id)}></button>
-                                    <button onClick={() => editTodo(item.id, item.title)}></button>
+                                : <div className={s.wrapBtn}>
+                                    <button className={ !item.status ? `${s.btn} ${s.btnEdit}` : s.none} onClick={() => editTodo(item.id, item.title)}>
+                                        <img src={editImg} alt="edit" />
+                                    </button>
+
+                                    <button className={`${s.btn} ${s.btnRed}`} onClick={() => deleteTodo(item.id)}>
+                                        <img src={trashImg} alt="delete" />
+                                    </button>
+
+                                    <button className={!item.status ? `${s.btn} ${s.btnDone}` : s.none} onClick={() => statusTodo(item.id)}>
+                                        <img src={doneImg} alt="done" />
+                                    </button>
                                 </div>
                         }
 
+                        
 
-                    </div>
+
+                    </li>
+                    
 
                 ))
             }
-        </div>
+        </ul>
     )
 }
 

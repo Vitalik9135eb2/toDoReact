@@ -1,5 +1,95 @@
-.wrap{
+.none{
+    display: none !important;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    margin: 14px 0;
+    border: 2px solid #c4c4c4;
+    border-radius: 4px;
+}
+
+.item{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    height: 32px;
+    border-bottom: 2px solid #c4c4c4;
+    padding: 0 8px;
+    &:last-child{
+        border: none;
+    }
+}
+
+.itemDone{
+    background-color: #c4c4c46b;
+}
+
+.textWrap{
+    width: 100%;
+}
+
+.todoTextInput{
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+    caret-color: #ff9900;
+}
+
+.todoText{
+    color: #515151;
+}
+
+.wrapBtn{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn{
+    background-color: transparent;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #c4c4c4;
+    cursor: pointer;
+    transition: .3s;
+
+    img{
+        width: 18px;
+        height: 20px;
+        filter: invert(91%) sepia(5%) saturate(10%) hue-rotate(336deg) brightness(84%) contrast(98%);
+    }
+}
+
+.btnRed{
+    &:hover{
+        border-color: #ff0000 ;
+
+        img{
+            filter: invert(32%) sepia(94%) saturate(7477%) hue-rotate(356deg) brightness(106%) contrast(122%);
+        }
+    }
+}
+
+.btnEdit{
+    &:hover{
+        border-color: #ffae34;
+
+        img{
+            filter: invert(71%) sepia(67%) saturate(1071%) hue-rotate(334deg) brightness(107%) contrast(101%);
+        }
+    }
+    
+}
+
+.btnDone{
+    &:hover{
+        border-color: #12ff12;
+
+        img{
+            filter: invert(63%) sepia(22%) saturate(2483%) hue-rotate(74deg) brightness(113%) contrast(120%);
+        }
+    }
 }

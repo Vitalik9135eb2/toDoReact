@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import s from "./addTodo.module.scss"
 
 
 const AddTodo = ({ todo, setTodo }) => {
@@ -7,22 +8,25 @@ const AddTodo = ({ todo, setTodo }) => {
     const [value, setValue] = useState("")
 
     const saveTodo = () => {
-        setTodo(
-            [...todo, {
-                id: todo.length + 1,
-                title: value,
-                status: false
-            }]
-        )
-
-        setValue("")
+        if(value.length > 1){
+            setTodo(
+                [...todo, {
+                    id: todo.length + Math.random,
+                    title: value,
+                    status: false
+                }]
+            )
+    
+            setValue("")
+        }
+        
 
     }
 
     return (
-        <div className="">
-            <input type="text" placeholder="Add task" value={value} onChange={e => setValue(e.target.value)} /> 
-            <button onClick={saveTodo} >Save</button>
+        <div className={s.wrap}>
+            <input className={s.input} type="text" placeholder="Add task" value={value} onChange={e => setValue(e.target.value)} /> 
+            <button className={s.btn} onClick={saveTodo} >Save</button>
         </div>
     )
 }
